@@ -20,8 +20,8 @@
     </head>
     <body>
         <!-- Safari Check -->
-        <div id="safariErr" style="display:none">
-            <p align="center" style="color:red">This tool is not supported on Safari browser!</p>
+        <div id="safariErr">
+            <p>This tool is not supported on Safari browser!</p>
         </div>
         <!-- Main Container -->
         <div class="container" id="main">
@@ -108,6 +108,19 @@
 
         <!-- Main Script -->
         <script src="index.ts" type="module"></script>
+        <!-- Safari Check -->
+        <script src="index.ts" type="module"></script>
+        <!-- Safari Check -->
+        <script>
+            var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { 
+                return p.toString() === "[object SafariRemoteNotification]"; 
+            })(!window['safari'] || (typeof safari !== 'undefined' && window['safari'].pushNotification));
+
+            if(isSafari) {
+                document.getElementById("safariErr").style.display = "inline";
+                document.getElementById("main").style.display = "none";
+            }
+        </script>
     <!-- Footer -->
     <br><br>
     <div style="text-align: center; margin-top: 20px; padding: 10px;">

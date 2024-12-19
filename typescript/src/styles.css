@@ -28,6 +28,12 @@ hr {
     border-color: var(--border-black);
 }
 
+#safariErr{ 
+    display:none;
+    text-align: center;
+    color: red;
+}
+
 #alertDiv {
     display: none;
 }
