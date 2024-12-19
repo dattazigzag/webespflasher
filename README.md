@@ -13,7 +13,7 @@ The original readme file: [here](README_orig.md)
 
 ## Live demo
 
-Visit: https://espressif.github.io/esptool-js/
+Visit: [https://dattasaurabh82.github.io/webespflasher/](https://dattasaurabh82.github.io/webespflasher/)
 
 ## Testing it locally
 
