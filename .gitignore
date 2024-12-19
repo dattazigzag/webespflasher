@@ -1,0 +1,9 @@
+node_modules
+typescript/node_modules
+typescript/dist
+lib
+bundle.js
+docs
+esptool-js-*.tgz
+.vscode/settings.json
+.parcel-cache

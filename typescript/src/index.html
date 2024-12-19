@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ESP Flasher Tool</title>
+        <!-- External dependencies -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xterm@4.19.0/css/xterm.css">
+        <!-- Our custom CSS -->
+        <link rel="stylesheet" href="styles.css">
+        <!-- icon -->
+        <link rel="icon" href="../assets/favicon.ico" />
+        <!-- External scripts -->
+        <script src="https://cdn.jsdelivr.net/npm/xterm@4.19.0/lib/xterm.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <!-- Header -->
+        <h4 align="center">A Serial Flasher utility for Espressif chips</h4>
+
+        <!-- Safari Error Message -->
+        <!-- <div id="safariErr" style="display:none">
+            <p align="center" style="color:red">This tool is not supported on Safari browser!</p>
+        </div> -->
+
+        <!-- Main Container -->
+        <div class="container" id="main">
+            <!-- Program Section -->
+            <div id="program">
+                <hr/>
+                <h3>Program</h3>
+                <!-- Debug Logging -->
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="debugLogging" value="">
+                    <label class="form-check-label" for="debugLogging">Show Debug log</label>
+                </div>
+
+                <!-- Baudrate Selection -->
+                <label id="lblConnTo">Connected to device: </label>
+                <label for="baudrates" id="lblBaudrate">Baudrate:</label>
+                <select name="baudrates" id="baudrates">
+                    <option value="921600">921600</option>
+                    <option value="460800">460800</option>
+                    <option value="230400">230400</option>
+                    <option value="115200">115200</option>
+                </select>
+
+                <br>
+
+                <!-- Control Buttons -->
+                <input class="btn btn-info btn-sm" type="button" id="connectButton" value="Connect" />
+                <input class="btn btn-warning btn-sm" type="button" id="disconnectButton" value="Disconnect" />
+                <br><br>
+
+                <!-- Alert Box -->
+                <div class="alert alert-danger alert-dismissible" id="alertDiv">
+                    <a href="#" class="close" aria-label="close" onclick="$('.alert').hide()">&times;</a>
+                    <span id="alertmsg"></span>
+                </div>
+
+                <!-- Files Section -->
+                <div id="files">
+                    <table class="table table-striped" id="fileTable">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Flash Address</th>
+                                <th>File</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                        </tbody>
+                    </table>
+                    <input class="btn btn-info btn-sm" type="button" id="addFile" value="Add File" />
+                    <br><br>
+                    <input class="btn btn-info btn-sm" type="button" id="copyTraceButton" value="Copy Trace" />
+                    <input class="btn btn-danger btn-sm" type="button" id="eraseButton" value="Erase Flash" />
+                    <input class="btn btn-info btn-sm" type="button" id="programButton" value="Program" />
+                </div>
+                <output id="list"></output>
+                <hr/>
+            </div>
+
+            <!-- Console Section -->
+            <div id="console">
+                <h3>Console</h3>
+                <label id="lblConsoleFor">Connected to device: </label>
+                <label for="consoleBaudrates" id="lblConsoleBaudrate">Baudrate:</label>
+                <select name="consoleBaudrates" id="consoleBaudrates">
+                    <option value="115200">115200</option>
+                    <option value="74880">74880</option>
+                </select>
+
+                <br><br>
+
+                <!-- Console Control Buttons -->
+                <input class="btn btn-info" type="button" id="consoleStartButton" value="Start" />
+                <input class="btn btn-info" type="button" id="consoleStopButton" value="Stop" />
+                <input class="btn btn-info" type="button" id="resetButton" value="Reset" />
+                <hr/>
+            </div>
+
+            <!-- Terminal -->
+            <div id="terminal"></div>
+        </div>
+
+        <!-- Main Script -->
+        <script src="index.ts" type="module"></script>
+        <!-- Safari Check -->
+        <script>
+            var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { 
+                return p.toString() === "[object SafariRemoteNotification]"; 
+            })(!window['safari'] || (typeof safari !== 'undefined' && window['safari'].pushNotification));
+
+            if(isSafari) {
+                document.getElementById("safariErr").style.display = "inline";
+                document.getElementById("main").style.display = "none";
+            }
+        </script>
+    </body>
+</html>
