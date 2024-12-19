@@ -23,6 +23,10 @@ label {
     color: var(--text-black);
 }
 
+#lblConnTo, #lblConsoleFor{
+    display: none;
+}
+
 hr {
     border: 1px solid var(--text-black);
     border-color: var(--border-black);
@@ -85,26 +89,136 @@ input[type="text"] {
 #terminal {
     background-color: var(--main-bg);
     border: none;
-    /* border: 2px solid var(--border-black); */
-    /* border-radius: var(--radius); */
-    /* color: var(--text-black);
-    font-family: 'Roboto Mono', monospace;
-    font-weight: normal; */
+    width: 100% !important;  /* Force full width */
 }
 
-/* Table styles */
+/* Terminal container styling */
+.xterm {
+    padding: 0 !important;
+    width: 100% !important;
+}
+
+/* Hide default scrollbar area */
+.xterm .xterm-scroll-area {
+    background-color: var(--main-bg) !important;
+}
+
+/* Custom scrollbar styling */
+.xterm-viewport {
+    /* Match terminal background */
+    background-color: var(--main-bg) !important;
+    width: 100% !important;
+    /* Scrollbar styling for webkit browsers */
+    &::-webkit-scrollbar {
+        width: 10px;
+    }
+    &::-webkit-scrollbar-track {
+        background: var(--main-bg);
+    }
+    &::-webkit-scrollbar-thumb {
+        background: #555555;
+        border-radius: 5px;
+    }
+}
+
+/* Screen should also be full width */
+.xterm-screen {
+    width: 100% !important;
+}
+
+/* File table styles */
+/* Comprehensive table border styling */
+.table,
+.table > thead,
+.table > tbody,
+.table > tfoot,
+.table > thead > tr,
+.table > tbody > tr,
+.table > tfoot > tr,
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td {
+    border: 2px solid var(--border-black) !important;
+    border-color: var(--border-black) !important;
+}
+
+/* Specifically target the header/body separator line */
+.table > thead > tr:last-child > th {
+    border-bottom: 2px solid var(--border-black) !important;
+}
+
+/* Ensure no spacing between cells */
 .table {
-    background-color: var(--main-bg);
-    color: var(--text-black);
-    border: 2px solid var(--border-black);
+    border-collapse: collapse !important;
+    border-spacing: 0 !important;
 }
 
-#fileTable {
-    background-color: var(--main-bg);
-    color: var(--text-black);
-    border: 2px solid var(--border-black);
+/* Table styles - base */
+.table {
+    border-collapse: collapse !important;
+    border-spacing: 0 !important;
+    width: 100%;
+    table-layout: fixed; /* Add this to control column widths better */
 }
-.table th,
-.table td {
-    border-color: var(--border-black);
+
+/* Column widths */
+.table th:nth-child(1),
+.table td:nth-child(1) {
+    width: 15%; /* Flash Address column */
+}
+
+.table th:nth-child(2),
+.table td:nth-child(2) {
+    width: 50%; /* File column */
+}
+
+.table th:nth-child(3),
+.table td:nth-child(3) {
+    width: 35%; /* Progress/Remove column */
+    border: none !important;
+}
+
+/* Cell padding and alignment - adjust these values */
+.table > thead > tr > th,
+.table > tbody > tr > td {
+    padding: 8px 8px !important;  /* Reduced padding */
+    vertical-align: middle !important;
+}
+
+/* Input field styling - adjust width and padding */
+input[type="text"] {
+    background-color: var(--main-bg);
+    border: 2px solid var(--border-black);
+    border-radius: var(--radius);
+    padding: 6px 8px;
+    width: 80%;    /* Slightly reduced width */
+    max-width: none;  /* Remove max-width constraint */
+    box-sizing: border-box;
+}
+
+/* Progress bar styling - adjust height and margins */
+.progress-cell progress {
+    margin: 10;
+    width: 85%;
+    height: 20px;  /* Slightly reduced height */
+    border: none;
+}
+
+/* File input styling */
+/* input[type="file"] {
+    width: 100%;
+    max-width: none;
+} */
+
+/* Remove any margins from table rows */
+.table tr {
+    margin: 0 !important;
+}
+
+/* Ensure consistent row height */
+.table tbody tr {
+    height: 40px; /* Adjust this value as needed */
 }

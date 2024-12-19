@@ -36,10 +36,10 @@ declare let CryptoJS; // CryptoJS is imported in HTML script
 const term = new Terminal({
   fontSize: 12,
   lineHeight: 1.2,
-  cols: 120,
+  cols: 171,
   rows: 24,
-  cursorBlink: true,
-  scrollback: 0,
+  // cursorBlink: true,
+  // scrollback: 0,
   theme: {
     background: "#7D7D7D",
     foreground: "#000000",
