@@ -1,6 +1,11 @@
 # Typescript implementation of esptool-js
 
-### Slightly modified to customize the UI
+## Slightly modified to customize the UI
+
+| Type | Status |
+|------|---------|
+| Build status | [![artefact build status](https://github.com/dattasaurabh82/webespflasher/actions/workflows/ci.yml/badge.svg)](https://github.com/dattasaurabh82/webespflasher/actions/workflows/ci.yml) |
+| Page Build status | [![artefact build status](https://github.com/dattasaurabh82/webespflasher/actions/workflows/pages.yml/badge.svg)](https://github.com/dattasaurabh82/webespflasher/actions/workflows/pages.yml) |
 
 The original project: [here](https://github.com/espressif/esptool-js/tree/main)
 
