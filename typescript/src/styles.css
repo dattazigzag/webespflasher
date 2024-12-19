@@ -28,6 +28,10 @@ hr {
     border-color: var(--border-black);
 }
 
+#alertDiv {
+    display: none;
+}
+
 /* Dropdowns */
 select {
     background-color: var(--main-bg);
